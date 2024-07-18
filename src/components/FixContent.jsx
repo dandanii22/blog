@@ -10,8 +10,8 @@ const FixContent = () => {
   const Likes = 0;
   const comment = [];
 
-  const onSubmit = (e) => {
-    e.preventdefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const blog = { title, body, author, Likes, comment };
     fetch(`http://localhost:3001/blog/` + id, {
       method: "PUT",
@@ -21,13 +21,13 @@ const FixContent = () => {
       .then((res) => res.json())
       .then(() => {
         alert("블로그를 수정하시겠습니까?");
-        navigate(`/blog/` + blog.id);
+        navigate(`/blog/` + id);
       });
   };
   return (
     <div className="create">
       <h1>블로그 수정</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Blog Title :</label>
         <input
           type="text"

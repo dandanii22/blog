@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 
+// eslint-disable-next-line react/prop-types
 const FixComment = ({ setEditIndex, editIndex }) => {
   const [comment, setComment] = useState("");
   const { id } = useParams();
