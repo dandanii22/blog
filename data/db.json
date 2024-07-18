@@ -6,13 +6,7 @@
       "author": "Dani",
       "Likes": 9,
       "id": "1",
-      "comment": [
-        "Nice!",
-        "Very Clean Code!",
-        "너무 좋아요!",
-        "좋아요~",
-        "좋아요"
-      ]
+      "comment": ["댓글입니다.", "Very Clean Code!"]
     },
     {
       "title": "Why do we use it?",
@@ -20,11 +14,7 @@
       "author": "Dani",
       "Likes": 9,
       "id": "2",
-      "comment": [
-        "Have a nice Day",
-        "Nice!",
-        "Very Clean Code!"
-      ]
+      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
     },
     {
       "title": "Where can I get some?",
@@ -32,11 +22,7 @@
       "author": "Dani",
       "Likes": 4,
       "id": "3",
-      "comment": [
-        "Have a nice Day",
-        "Nice!",
-        "Very Clean Code!"
-      ]
+      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
     },
     {
       "title": "Where can I get some?",
@@ -44,11 +30,7 @@
       "author": "Dani",
       "Likes": 3,
       "id": "4",
-      "comment": [
-        "Have a nice Day",
-        "Nice!",
-        "Very Clean Code!"
-      ]
+      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
     },
     {
       "title": "Where can I get some?",
@@ -56,11 +38,7 @@
       "author": "Dani",
       "Likes": 15,
       "id": "5",
-      "comment": [
-        "Have a nice Day",
-        "Nice!",
-        "Very Clean Code!"
-      ]
+      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
     },
     {
       "title": "Where can I get some?",
@@ -68,11 +46,7 @@
       "author": "Dani",
       "Likes": 2,
       "id": "6",
-      "comment": [
-        "Have a nice Day",
-        "Nice!",
-        "Very Clean Code!"
-      ]
+      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
     }
   ]
 }

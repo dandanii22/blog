@@ -1,14 +1,13 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import CommentCreate from "./CommentCreate";
+import { useState } from "react";
+import FixComment from "./FixComment";
 
 // 게시물 등록
 const BlogDetails = () => {
   const { id } = useParams();
-  const {
-    data: blog,
-    error,
-    isLoading,
-  } = useFetch(`http://localhost:3001/blog/${id}`);
+  const { data: blog } = useFetch(`http://localhost:3001/blog/${id}`);
   console.log(id);
   const navigate = useNavigate();
 
@@ -36,13 +35,14 @@ const BlogDetails = () => {
     }).then((res) => res.json);
   };
 
-  // 댓글 추가
+  // 댓글 수정
+  const [editIndex, setEditIndex] = useState(null);
+  const clickEditBtn = (idx) => {
+    setEditIndex(editIndex === idx ? null : idx);
+  };
 
   return (
     <div className="blog-details">
-      {/* <h2>BlogDetails - {id}</h2> */}
-      {isLoading && <div>Loading...</div>}
-      {error && <div>{error}</div>}
       {blog && (
         <article>
           <h2>{blog.title}</h2>
@@ -70,37 +70,36 @@ const BlogDetails = () => {
       {blog && (
         <article>
           <h1>댓글</h1>
-          <Link to={`/CommentCreate/` + id}>
-            <buttnon>댓글 등록</buttnon>
-          </Link>
-
-          {blog.comment.map((comment, idx) => {
-            return (
-              <div key={idx}>
-                <div>{comment}</div>
-                <button
-                  onClick={() => {
-                    const CommentData = blog.comment;
-                    CommentData.splice(idx, 1);
-                    let BlogContent = {
-                      ...blog,
-                      comment: CommentData,
-                    };
-                    alert("댓글을 삭제하시겠습니까?");
-                    fetch("http://localhost:3001/blog/" + blog.id, {
-                      method: "PUT",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify(BlogContent),
-                    }).then(() => {
-                      navigate(`/blog/` + blog.id);
-                    });
-                  }}
-                >
-                  댓글 삭제
-                </button>
-              </div>
-            );
-          })}
+          <CommentCreate />
+          {blog.comment.map((comment, id) => (
+            <div key={id}>
+              <div>{comment}</div>
+              {editIndex === id && (
+                <FixComment setEditIndex={setEditIndex} editIndex={editIndex} />
+              )}
+              <button onClick={() => clickEditBtn(id)}>수정</button>
+              <button
+                onClick={() => {
+                  const CommentData = [...blog.comment];
+                  CommentData.splice(id, 1);
+                  let BlogContent = {
+                    ...blog,
+                    comment: CommentData,
+                  };
+                  alert("댓글을 삭제하시겠습니까?");
+                  fetch(`http://localhost:3001/blog/${blog.id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(BlogContent),
+                  }).then(() => {
+                    navigate(`/blog/${blog.id}`);
+                  });
+                }}
+              >
+                댓글 삭제
+              </button>
+            </div>
+          ))}
         </article>
       )}
     </div>

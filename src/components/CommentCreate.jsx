@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
 const CommentCreate = () => {
-  const navigate = useNavigate();
   const [comment, setComment] = useState("");
   const { id } = useParams();
   const {
@@ -23,13 +22,9 @@ const CommentCreate = () => {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(CommentAdd),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then(() => {
-        navigate(`/blog/` + blog.id);
-      });
+    }).then((res) => {
+      return res.json();
+    });
   };
   return (
     <div>
