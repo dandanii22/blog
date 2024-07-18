@@ -55,10 +55,16 @@
 /* blog details page */
 .blog-details {
   animation: fadeIn 0.5s ease-in-out;
+  position: relative;
+}
+
+.blog-details p {
+  font-weight: 700;
+  font-size: 18px;
 }
 
 .blog-details h2 {
-  font-size: 20px;
+  font-size: 25px;
   color: #f1356d;
   margin-bottom: 10px;
 }
@@ -112,7 +118,28 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.likebtn {
+  position: absolute;
+  right: 0;
+  top: 20px;
+}
+.likebtn i {
+  margin-right: 5px;
+}
+.bodywrap {
+  border: 1px solid #999;
+  border-radius: 10px;
+  padding: 30px;
+}
+.btnwrap {
+  position: absolute;
+  right: 0;
+}
 .delbtn {
+  margin-right: 10px;
+}
+.editbtn {
   margin-right: 10px;
 }
 /*Animation*/
