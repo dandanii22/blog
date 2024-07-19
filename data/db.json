@@ -4,8 +4,8 @@
       "title": "Why do we use it?",
       "body": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
       "author": "Dani",
-      "Likes": 0,
-      "comment": [],
+      "Likes": 2,
+      "comment": ["수정합니다", "Nice!", "좋아요"],
       "id": "1"
     },
     {
@@ -14,7 +14,7 @@
       "author": "Dani",
       "Likes": 9,
       "id": "2",
-      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
+      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!", "바보멍청이"]
     },
     {
       "title": "Where can I get some?",
