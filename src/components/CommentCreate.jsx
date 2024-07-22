@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 import useFetch from "../hooks/useFetch";
 
 const CommentCreate = () => {
@@ -10,29 +11,40 @@ const CommentCreate = () => {
     error,
     isLoading,
   } = useFetch("http://localhost:3001/blog/" + id);
+
   const AddComment = () => {
-    const CommentData = blog.comment;
-    CommentData.push(comment);
-    let CommentAdd = {
+    const updatedComments = [...blog.comment, comment];
+
+    const updatedBlog = {
       ...blog,
-      comment: CommentData,
+      comment: updatedComments,
     };
-    alert("댓글을 추가하시겠습니까?");
-    fetch("http://localhost:3001/blog/" + blog.id, {
+
+    // const test = postAxixos(
+    //   "http://localhost:3001/blog",
+    //   blog.id,
+    //   JSON.stringify(updatedBlog)
+    // );
+    // test.then((res) => {
+    //   console.log(res);
+    // });
+
+    // alert("댓글을 추가하시겠습니까?");
+
+    fetch("http://localhost:3001/blog/" + id, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(CommentAdd),
-    }).then((res) => {
-      return res.json();
-    });
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedBlog),
+    }).then((res) => res.json());
   };
   return (
     <div>
       {isLoading && <div>Loading...</div>}
       {error && <div>{error}</div>}
       {blog && (
-        <form>
-          <h1>댓글 추가</h1>
+        <div className="commenttop">
           <label>댓글 : </label>
           <textarea
             required
@@ -40,7 +52,7 @@ const CommentCreate = () => {
             onChange={(e) => setComment(e.target.value)}
           />
           <button onClick={AddComment}>추가</button>
-        </form>
+        </div>
       )}
     </div>
   );

@@ -8,7 +8,6 @@ import FixComment from "./FixComment";
 const BlogDetails = () => {
   const { id } = useParams();
   const { data: blog } = useFetch(`http://localhost:3001/blog/${id}`);
-  console.log(id);
   const navigate = useNavigate();
 
   //게시물 삭제
@@ -80,7 +79,7 @@ const BlogDetails = () => {
               <button onClick={() => clickEditBtn(id)}>수정</button>
               <button
                 onClick={() => {
-                  const CommentData = [...blog.comment];
+                  const CommentData = blog.comment;
                   CommentData.splice(id, 1);
                   let BlogContent = {
                     ...blog,
@@ -88,7 +87,7 @@ const BlogDetails = () => {
                   };
                   alert("댓글을 삭제하시겠습니까?");
                   fetch(`http://localhost:3001/blog/${blog.id}`, {
-                    method: "PUT",
+                    method: "DELETE",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(BlogContent),
                   }).then(() => {

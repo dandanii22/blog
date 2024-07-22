@@ -91,6 +91,15 @@
 .CommentSection {
   animation: fadeIn 0.5s ease-in-out;
 }
+.commenttop {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.commenttop textarea {
+  width: 900px;
+  height: 30px;
+}
 .create label {
   text-align: left;
   display: block;
@@ -133,8 +142,8 @@
   padding: 30px;
 }
 .btnwrap {
-  position: absolute;
-  right: 0;
+  display: flex;
+  justify-content: right;
 }
 .delbtn {
   margin-right: 10px;
