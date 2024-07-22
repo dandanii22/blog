@@ -7,7 +7,6 @@ import BlogDetails from "./components/BlogDetails";
 import NotFound from "./components/NotFound";
 import FixContent from "./components/FixContent";
 import CommentCreate from "./components/CommentCreate";
-import Join from "./components/Join";
 
 function App() {
   return (
@@ -21,7 +20,6 @@ function App() {
             <Route path="/blog/:id" element={<BlogDetails />} />
             <Route path="/CommentCreate/:id" element={<CommentCreate />} />
             <Route path="/FixContent/:id" element={<FixContent />} />
-            <Route path="/join" element={<Join />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
