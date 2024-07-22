@@ -36,13 +36,14 @@ const FixComment = ({ setEditIndex, editIndex }) => {
       {error && <div>{error}</div>}
       {blog && (
         <form onSubmit={handleSubmit}>
-          <label>댓글:</label>
+          <label>댓글 : </label>
           <input
             required
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          <button>수정</button>
+          <button className="comment_editbtn">수정</button>
+          <button onClick={() => setEditIndex(null)}>취소</button>
         </form>
       )}
     </div>

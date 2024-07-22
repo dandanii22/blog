@@ -2,45 +2,81 @@
   "blog": [
     {
       "title": "7월 20일 일상",
-      "body": "랜더스파크 야구 보러 간 날! 랜디데이라 기대하고 갔는데 1회 시작하자마자 비가 많이 와서 경기 취소되었다ㅠ",
+      "body": "랜더스파크 야구 보러 간 날! 랜디데이라 기대하고 갔는데 1회 시작하자마자 비가 많이 와서 경기 취소되었다ㅠ 그래도 금액은 모두 환불 받아서 다행이다. 역시 랜디는 귀여웠다",
       "img": "../public/images/img1.jpg",
       "author": "Dani",
-      "Likes": 3,
+      "Likes": 4,
       "id": "1",
-      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
+      "comment": [
+        "Have a nice Day",
+        "Nice!",
+        "Very Clean Code!"
+      ]
     },
     {
-      "title": "Where can I get some?",
+      "title": "화분 고르는 방법",
       "body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-      "img": "../public/images/img1.jpg",
+      "img": "../public/images/img2.jpg",
       "author": "Dani",
       "Likes": 3,
       "id": "2",
-      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
+      "comment": [
+        "Have a nice Day",
+        "Nice!",
+        "Very Clean Code!"
+      ]
     },
     {
-      "title": "Where can I get some?",
+      "title": "부천 맛집 추천",
       "body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+      "img": "../public/images/img3.jpg",
       "author": "Dani",
       "Likes": 3,
       "id": "3",
-      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
+      "comment": [
+        "Have a nice Day",
+        "Nice!",
+        "Very Clean Code!"
+      ]
     },
     {
-      "title": "Where can I get some?",
+      "title": "부산 여행지 추천",
       "body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+      "img": "../public/images/img4.jpg",
       "author": "Dani",
       "Likes": 15,
       "id": "4",
-      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
+      "comment": [
+        "Have a nice Day",
+        "Nice!",
+        "Very Clean Code!"
+      ]
     },
     {
-      "title": "Where can I get some?",
+      "title": "월디페 후기",
       "body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+      "img": "../public/images/img5.jpg",
       "author": "Dani",
       "Likes": 2,
       "id": "5",
-      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
+      "comment": [
+        "Have a nice Day",
+        "Nice!",
+        "Very Clean Code!"
+      ]
+    },
+    {
+      "title": "야구장 추천 맛집",
+      "body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+      "img": "../public/images/img6.jpg",
+      "author": "Dani",
+      "Likes": 2,
+      "id": "6",
+      "comment": [
+        "Have a nice Day",
+        "Nice!",
+        "Very Clean Code!"
+      ]
     }
   ]
 }

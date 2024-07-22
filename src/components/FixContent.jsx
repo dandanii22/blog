@@ -5,6 +5,7 @@ const FixContent = () => {
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [img, setImg] = useState("");
   const [author, setAuthor] = useState("");
   const navigate = useNavigate();
   const Likes = 0;
@@ -36,6 +37,14 @@ const FixContent = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <label>Blog Img :</label>
+        <input
+          type="file"
+          required
+          placeholder="블로그 사진을 수정해주세요"
+          value={img}
+          onChange={(e) => setImg(e.target.value)}
+        />
         <label>Blog body : </label>
         <textarea
           required
@@ -50,7 +59,12 @@ const FixContent = () => {
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
-        <button>수정</button>
+        <div className="contentbtnwrap">
+          <button>수정</button>
+          <button onClick={() => navigate(-1)} className="cancelbtn">
+            취소
+          </button>
+        </div>
       </form>
     </div>
   );

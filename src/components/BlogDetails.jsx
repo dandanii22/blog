@@ -45,14 +45,19 @@ const BlogDetails = () => {
       {blog && (
         <article>
           <h2>{blog.title}</h2>
-          <p>Written by {blog.author}</p>
+          <p className="auth">Written by {blog.author}</p>
 
           <button className="likebtn" onClick={clickLikes}>
             <i className="xi-heart" />
             좋아요 : {blog.Likes}
           </button>
 
-          <div className="bodywrap">{blog.body}</div>
+          <div className="bodywrap">
+            <p>
+              <img src={blog.img} />
+            </p>
+            <p className="detail_body">{blog.body}</p>
+          </div>
           <div className="btnwrap">
             <button onClick={handleDel} className="delbtn">
               삭제
@@ -71,32 +76,40 @@ const BlogDetails = () => {
           <h1>댓글</h1>
           <CommentCreate />
           {blog.comment.map((comment, id) => (
-            <div key={id}>
-              <div>{comment}</div>
-              {editIndex === id && (
-                <FixComment setEditIndex={setEditIndex} editIndex={editIndex} />
-              )}
-              <button onClick={() => clickEditBtn(id)}>수정</button>
-              <button
-                onClick={() => {
-                  const CommentData = blog.comment;
-                  CommentData.splice(id, 1);
-                  let BlogContent = {
-                    ...blog,
-                    comment: CommentData,
-                  };
-                  alert("댓글을 삭제하시겠습니까?");
-                  fetch(`http://localhost:3001/blog/${blog.id}`, {
-                    method: "DELETE",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(BlogContent),
-                  }).then(() => {
-                    navigate(`/blog/${blog.id}`);
-                  });
-                }}
-              >
-                댓글 삭제
-              </button>
+            <div key={id} className="comment_detail">
+              <div>
+                <div>{comment}</div>
+                {editIndex === id && (
+                  <FixComment
+                    setEditIndex={setEditIndex}
+                    editIndex={editIndex}
+                  />
+                )}
+              </div>
+
+              <div className="commentBtn_wrap">
+                <button onClick={() => clickEditBtn(id)}>수정</button>
+                <button
+                  onClick={() => {
+                    const CommentData = blog.comment;
+                    CommentData.splice(id, 1);
+                    let BlogContent = {
+                      ...blog,
+                      comment: CommentData,
+                    };
+                    alert("댓글을 삭제하시겠습니까?");
+                    fetch(`http://localhost:3001/blog/${blog.id}`, {
+                      method: "DELETE",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(BlogContent),
+                    }).then(() => {
+                      navigate(`/blog/${blog.id}`);
+                    });
+                  }}
+                >
+                  댓글 삭제
+                </button>
+              </div>
             </div>
           ))}
         </article>

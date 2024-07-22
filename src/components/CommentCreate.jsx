@@ -46,7 +46,8 @@ const CommentCreate = () => {
       {blog && (
         <div className="commenttop">
           <label>댓글 : </label>
-          <textarea
+          <input
+            type="text"
             required
             value={comment}
             onChange={(e) => setComment(e.target.value)}

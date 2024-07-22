@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const BlogCreate = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [img, setImg] = useState("");
   const [author, setAuthor] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
@@ -29,13 +30,20 @@ const BlogCreate = () => {
   return (
     <div className="create">
       <h2>Add a New Blog</h2>
-      <form onSubmit={handelSubmit}>
+      <form onSubmit={handelSubmit} className="createBlog">
         <label>Blog Title : </label>
         <input
           type="text"
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+        />
+        <label>Blog Image : </label>
+        <input
+          type="file"
+          required
+          value={img}
+          onChange={(e) => setImg(e.target.value)}
         />
         <label>Blog body : </label>
         <textarea
@@ -49,9 +57,17 @@ const BlogCreate = () => {
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
+        <div className="contentbtnwrap">
+          {!isLoading ? (
+            <button>추가</button>
+          ) : (
+            <button disabled>추가 중입니다...</button>
+          )}
 
-        {!isLoading && <button>추가</button>}
-        {isLoading && <button disabled>추가 중입니다...</button>}
+          <button className="cancelbtn" onClick={() => navigate("/")}>
+            취소
+          </button>
+        </div>
       </form>
     </div>
   );
