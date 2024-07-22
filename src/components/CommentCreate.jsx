@@ -6,6 +6,7 @@ import useFetch from "../hooks/useFetch";
 const CommentCreate = () => {
   const [comment, setComment] = useState("");
   const { id } = useParams();
+
   const {
     data: blog,
     error,
@@ -20,16 +21,7 @@ const CommentCreate = () => {
       comment: updatedComments,
     };
 
-    // const test = postAxixos(
-    //   "http://localhost:3001/blog",
-    //   blog.id,
-    //   JSON.stringify(updatedBlog)
-    // );
-    // test.then((res) => {
-    //   console.log(res);
-    // });
-
-    // alert("댓글을 추가하시겠습니까?");
+    alert("댓글을 추가하시겠습니까?");
 
     fetch("http://localhost:3001/blog/" + id, {
       method: "PUT",
@@ -37,7 +29,9 @@ const CommentCreate = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedBlog),
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .then(() => window.location.reload());
   };
   return (
     <div>

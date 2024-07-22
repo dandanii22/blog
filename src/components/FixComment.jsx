@@ -5,6 +5,7 @@ import useFetch from "../hooks/useFetch";
 // eslint-disable-next-line react/prop-types
 const FixComment = ({ setEditIndex, editIndex }) => {
   const [comment, setComment] = useState("");
+
   const { id } = useParams();
   const {
     data: blog,
@@ -28,6 +29,7 @@ const FixComment = ({ setEditIndex, editIndex }) => {
       .then((res) => res.json())
       .then(() => {
         setEditIndex(null);
+        window.location.reload();
       });
   };
   return (

@@ -31,7 +31,9 @@ const BlogDetails = () => {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(clickLike),
-    }).then((res) => res.json);
+    })
+      .then((res) => res.json)
+      .then(() => window.location.reload());
   };
 
   // 댓글 수정
