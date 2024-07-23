@@ -1,45 +1,65 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
 import CommentCreate from "./CommentCreate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FixComment from "./FixComment";
+import { useAxios } from "../hooks/useAxios";
 
 // 게시물 등록
 const BlogDetails = () => {
   const { id } = useParams();
-  const { data: blog } = useFetch(`http://localhost:3001/blog/${id}`);
   const navigate = useNavigate();
 
-  //게시물 삭제
-  const handleDel = () => {
-    fetch("http://localhost:3001/blog/" + blog.id, {
-      method: "DELETE",
-    }).then(() => {
-      alert("게시물을 삭제하시겠습니까?");
-      navigate("/");
-    });
-  };
+  const {
+    data: blog,
+    PUT,
+    GET,
+    DELETE,
+    setData,
+  } = useAxios(`http://localhost:3001/blog` + id);
+
+  useEffect(() => {
+    GET(`http://localhost:3001/blog`, id);
+  }, [id]);
 
   // 게시물 좋아요
-  const clickLikes = () => {
+  const clickLikes = async () => {
     const clickLike = {
       ...blog,
       Likes: blog.Likes + 1,
     };
 
-    fetch("http://localhost:3001/blog/" + blog.id, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(clickLike),
-    })
-      .then((res) => res.json)
-      .then(() => window.location.reload());
+    // PUT 요청 보내기
+    await PUT("http://localhost:3001/blog", blog.id, clickLike);
+  };
+
+  // 게시물 삭제
+  const handleDel = async () => {
+    await DELETE("http://localhost:3001/blog", blog.id).then(() => {
+      alert("게시물을 삭제하시겠습니까?");
+      setData(null);
+      navigate("/");
+    });
   };
 
   // 댓글 수정
   const [editIndex, setEditIndex] = useState(null);
   const clickEditBtn = (idx) => {
     setEditIndex(editIndex === idx ? null : idx);
+  };
+
+  // 댓글 삭제
+  const commentDel = async (commentId) => {
+    const CommentData = blog.comment.filter(
+      (comment, index) => index !== commentId
+    );
+    let BlogContent = {
+      ...blog,
+      comment: CommentData,
+    };
+    await PUT("http://localhost:3001/blog", blog.id, BlogContent).then(() => {
+      alert("댓글을 삭제하시겠습니까?");
+      navigate(`/blog/${blog.id}`);
+    });
   };
 
   return (
@@ -77,7 +97,7 @@ const BlogDetails = () => {
         <article>
           <h1>댓글</h1>
           <CommentCreate />
-          {blog.comment.map((comment, id) => (
+          {blog?.comment?.map((comment, id) => (
             <div key={id} className="comment_detail">
               <div>
                 <div>{comment}</div>
@@ -91,26 +111,7 @@ const BlogDetails = () => {
 
               <div className="commentBtn_wrap">
                 <button onClick={() => clickEditBtn(id)}>수정</button>
-                <button
-                  onClick={() => {
-                    const CommentData = blog.comment;
-                    CommentData.splice(id, 1);
-                    let BlogContent = {
-                      ...blog,
-                      comment: CommentData,
-                    };
-                    alert("댓글을 삭제하시겠습니까?");
-                    fetch(`http://localhost:3001/blog/${blog.id}`, {
-                      method: "DELETE",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify(BlogContent),
-                    }).then(() => {
-                      navigate(`/blog/${blog.id}`);
-                    });
-                  }}
-                >
-                  댓글 삭제
-                </button>
+                <button onClick={() => commentDel(id)}>댓글 삭제</button>
               </div>
             </div>
           ))}

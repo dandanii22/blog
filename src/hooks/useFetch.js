@@ -16,7 +16,6 @@ const useFetch = (url) => {
           setIsLoading(false);
           setError(null);
         })
-      
 
         .catch((err) => {
           console.log(err);
@@ -24,7 +23,7 @@ const useFetch = (url) => {
     }, 200);
   }, [url]);
 
-  return { data, isLoading, error };
+  return { data, isLoading, error, setData };
 };
 
 export default useFetch;

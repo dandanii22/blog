@@ -1,27 +1,27 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAxios } from "../hooks/useAxios";
 
 const BlogCreate = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [img, setImg] = useState("");
   const [author, setAuthor] = useState("");
+  const [Likes, setLikes] = useState(0);
 
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  const { POST } = useAxios();
 
   const handelSubmit = (e) => {
     e.preventDefault();
     const blog = { title, body, author };
     setIsLoading(true);
-    fetch(`http://localhost:3001/blog`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(blog),
-    }).then(() => {
-      console.log("new blog");
+    POST("http://localhost:3001/blog", "", blog).then(() => {
       setIsLoading(false);
       alert("블로그가 생성되었습니다.");
+      setLikes(Likes + 1);
       navigate("/");
     });
 
