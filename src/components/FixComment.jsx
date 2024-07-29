@@ -1,18 +1,23 @@
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import useFetch from "../hooks/useFetch";
+import { useAxios } from "../hooks/useAxios";
 
 // eslint-disable-next-line react/prop-types
-const FixComment = ({ setEditIndex, editIndex }) => {
+const FixComment = ({ setEditIndex, editIndex, blog }) => {
   const [comment, setComment] = useState("");
 
   const { id } = useParams();
-  const {
-    data: blog,
-    isLoading,
-    error,
-  } = useFetch("http://localhost:3001/blog/" + id);
-  const handleSubmit = (e) => {
+  const { PUT } = useAxios(`http://localhost:3001/blog` + id);
+
+  // 수정할 댓글 가져오기
+  useEffect(() => {
+    if (blog && editIndex !== null) {
+      setComment(blog.comment[editIndex]);
+    }
+  }, [editIndex]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const CommentData = blog.comment;
     CommentData.splice(editIndex, 1, comment);
@@ -21,21 +26,13 @@ const FixComment = ({ setEditIndex, editIndex }) => {
       comment: CommentData,
     };
     alert("댓글을 수정하시겠습니까?");
-    fetch("http://localhost:3001/blog/" + id, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(CommnetFix),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        setEditIndex(null);
-        window.location.reload();
-      });
+    await PUT(`http://localhost:3001/blog`, id, CommnetFix).then(() => {
+      setEditIndex(null);
+    });
   };
+
   return (
     <div className="editcomment">
-      {isLoading && <div>Loading...</div>}
-      {error && <div>{error}</div>}
       {blog && (
         <form onSubmit={handleSubmit}>
           <label>댓글 : </label>
@@ -44,8 +41,12 @@ const FixComment = ({ setEditIndex, editIndex }) => {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          <button className="comment_editbtn">수정</button>
-          <button onClick={() => setEditIndex(null)}>취소</button>
+          <button type="submit" className="comment_editbtn">
+            수정
+          </button>
+          <button type="button" onClick={() => setEditIndex(null)}>
+            취소
+          </button>
         </form>
       )}
     </div>

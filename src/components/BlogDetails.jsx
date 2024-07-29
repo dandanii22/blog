@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import CommentCreate from "./CommentCreate";
+// import CommentCreate from "./CommentCreate";
 import { useEffect, useState } from "react";
 import FixComment from "./FixComment";
 import { useAxios } from "../hooks/useAxios";
@@ -9,16 +9,13 @@ const BlogDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const {
-    data: blog,
-    PUT,
-    GET,
-    DELETE,
-    setData,
-  } = useAxios(`http://localhost:3001/blog` + id);
+  const { data: blog, PUT, GET, DELETE, setData } = useAxios();
 
   useEffect(() => {
-    GET(`http://localhost:3001/blog`, id);
+    if (id) {
+      GET(`http://localhost:3001/blog/${id}`);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   // 게시물 좋아요
@@ -38,6 +35,21 @@ const BlogDetails = () => {
       alert("게시물을 삭제하시겠습니까?");
       setData(null);
       navigate("/");
+    });
+  };
+
+  // 댓글추가
+  const [comment, setComment] = useState("");
+  const AddComment = async () => {
+    const updatedComments = [...blog.comment, comment];
+    const updatedBlog = {
+      ...blog,
+      comment: updatedComments,
+    };
+
+    alert("댓글을 추가하시겠습니까?");
+    await PUT("http://localhost:3001/blog", id, updatedBlog).then(() => {
+      setComment("");
     });
   };
 
@@ -96,7 +108,21 @@ const BlogDetails = () => {
       {blog && (
         <article>
           <h1>댓글</h1>
-          <CommentCreate />
+          <div>
+            {blog && (
+              <div className="commenttop">
+                <label>댓글 : </label>
+                <input
+                  type="text"
+                  required
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <button onClick={AddComment}>추가</button>
+              </div>
+            )}
+          </div>
+
           {blog?.comment?.map((comment, id) => (
             <div key={id} className="comment_detail">
               <div>
@@ -105,10 +131,10 @@ const BlogDetails = () => {
                   <FixComment
                     setEditIndex={setEditIndex}
                     editIndex={editIndex}
+                    blog={blog}
                   />
                 )}
               </div>
-
               <div className="commentBtn_wrap">
                 <button onClick={() => clickEditBtn(id)}>수정</button>
                 <button onClick={() => commentDel(id)}>댓글 삭제</button>

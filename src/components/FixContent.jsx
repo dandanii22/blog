@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAxios } from "../hooks/useAxios";
 
 const FixContent = () => {
   const { id } = useParams();
@@ -8,22 +9,29 @@ const FixContent = () => {
   const [img, setImg] = useState("");
   const [author, setAuthor] = useState("");
   const navigate = useNavigate();
-  const Likes = 0;
-  const comment = [];
+  const { PUT, data: blog } = useAxios(`http://localhost:3001/blog` + id);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (blog) {
+      setTitle(blog.title);
+      setBody(blog.body);
+      setImg(blog.img);
+      setAuthor(blog.author);
+    }
+  }, [blog]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const blog = { title, body, author, Likes, comment };
-    fetch(`http://localhost:3001/blog/` + id, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(blog),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        alert("블로그를 수정하시겠습니까?");
-        navigate(`/blog/` + id);
-      });
+    const updatedBlogData = {
+      title,
+      body,
+      img,
+      author,
+    };
+    await PUT(`http://localhost:3001/blog`, id, updatedBlogData).then(() => {
+      alert("블로그를 수정하시겠습니까?");
+      navigate(`/blog/` + id);
+    });
   };
   return (
     <div className="create">
