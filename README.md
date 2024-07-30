@@ -18,9 +18,10 @@
 - 진행 기간 : 7/19 ~ 7/21
 
 ## 🎯 제작 목적
--  비동기 통신 (axios) 연습
--  JSON-SERVER를 활용한 crud 페이지 제작
+- 비동기 통신 (axios) 연습
+- JSON-SERVER를 활용한 crud 페이지 제작
 - hooks 활용
+- Route 활용
   
 
 ## 👩🏻‍💻 주요 기능
@@ -30,4 +31,5 @@
 - 기존 useFetch 코드로 페이지 제작했으나, useAxios 코드로 최적화 변경 진행
 - 블로그 추가, 수정, 삭제 / 댓글 추가, 수정, 삭제 / 좋아요 기능 추가
 - put,post로 api 통신 진행할 경우 새로고침이 필요하기 때문에, put, post 작업 후 get 통신 진행하여 새로고침 없이 페이지 렌더링
+- Route, useNavigate 활용해 페이지 이동
 
