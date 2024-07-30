@@ -5,13 +5,9 @@
       "body": "랜더스파크 야구 보러 간 날! 랜디데이라 기대하고 갔는데 1회 시작하자마자 비가 많이 와서 경기 취소되었다ㅠ 그래도 금액은 모두 환불 받아서 다행이다. 역시 랜디는 귀여웠다",
       "img": "./images/img1.jpg",
       "author": "Dani",
-      "Likes": 15,
+      "Likes": 12,
       "id": "1",
-      "comment": [
-        "잘 보고 갑니다!",
-        "Nice!",
-        "Very Clean Code!"
-      ]
+      "comment": ["잘 보고 갑니다!", "Nice!", "Very Clean Code!"]
     },
     {
       "title": "화분 고르는 방법",
@@ -20,12 +16,7 @@
       "author": "Dani",
       "Likes": 14,
       "id": "2",
-      "comment": [
-        "Nice!",
-        "Very Clean Code!",
-        "좋아요",
-        "추가"
-      ]
+      "comment": ["Nice!", "Very Clean Code!", "좋아요", "추가"]
     },
     {
       "title": "부천 맛집 추천",
@@ -48,11 +39,7 @@
       "author": "Dani",
       "Likes": 15,
       "id": "4",
-      "comment": [
-        "Have a nice Day",
-        "Nice!",
-        "Very Clean Code!"
-      ]
+      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
     },
     {
       "title": "월디페 후기",
@@ -61,10 +48,7 @@
       "author": "Dani",
       "Likes": 4,
       "id": "5",
-      "comment": [
-        "Nice!",
-        "Very Clean Code!"
-      ]
+      "comment": ["Nice!", "Very Clean Code!"]
     },
     {
       "title": "야구장 추천 맛집",
@@ -73,11 +57,7 @@
       "author": "Dani",
       "Likes": 2,
       "id": "6",
-      "comment": [
-        "Have a nice Day",
-        "Nice!",
-        "Very Clean Code!"
-      ]
+      "comment": ["Have a nice Day", "Nice!", "Very Clean Code!"]
     }
   ]
 }
