@@ -8,7 +8,6 @@
 <br>
 
 - JSON-SERVER 활용해 블로그 제작 (RESTful api) </br>
-- 바로가기 : https://dandanii22.github.io/blog/dist/
 
 ## 🛠 활용 Skills 
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> 
